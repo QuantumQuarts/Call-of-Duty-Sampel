@@ -14,7 +14,7 @@ function fail($msg, $host) {
 mysqli_report(MYSQLI_REPORT_OFF);
 $db = @new mysqli($cfg['host'], $cfg['user'], $cfg['pass'], $cfg['name']);
 if ($db->connect_errno) {
-    fail('Koneksi database gagal. Periksa DB_HOST, DB_USER, DB_PASSWORD, dan DB_NAME.', $host);
+    fail('Koneksi database gagal: ' . $db->connect_error . ' (host=' . $cfg['host'] . ', user=' . $cfg['user'] . ', db=' . $cfg['name'] . ')', $host);
 }
 $db->set_charset('utf8mb4');
 
