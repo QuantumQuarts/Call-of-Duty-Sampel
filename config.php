@@ -1,6 +1,4 @@
 <?php
-// Kredensial dibaca dari Environment Variables DewaCloud (Settings > Variables).
-// Jika getenv() kosong di server Anda, isi nilai cadangan di sebelah kanan tanda ?:
 function env_or($key, $fallback) {
     $v = getenv($key);
     if ($v === false || $v === '') {
@@ -9,9 +7,16 @@ function env_or($key, $fallback) {
     return $v !== '' ? $v : $fallback;
 }
 
-return array(
+$cfg = array(
     'host' => env_or('DB_HOST', 'localhost'),
     'user' => env_or('DB_USER', 'root'),
     'pass' => env_or('DB_PASSWORD', ''),
     'name' => env_or('DB_NAME', 'CoD_db'),
 );
+
+// File ini dibuat langsung di server, tidak masuk Git.
+$local = __DIR__ . '/config.local.php';
+if (is_file($local)) {
+    $cfg = array_merge($cfg, require $local);
+}
+return $cfg;
