@@ -1,0 +1,103 @@
+:root {
+  --ink: #171a12;
+  --panel: #21261a;
+  --line: #3b4330;
+  --khaki: #b9b08a;
+  --bone: #e8e3d1;
+  --amber: #e0a526;
+  --red: #c4452f;
+  --green: #7fa045;
+  --stencil: "Black Ops One", Impact, "Arial Narrow", sans-serif;
+  --body: "Barlow Semi Condensed", "Arial Narrow", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background-color: var(--ink);
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-attachment: fixed;
+  color: var(--bone);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+.wrap { max-width: 1040px; margin: 0 auto; padding: 2rem 1rem 3rem; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.top { border-bottom: 3px solid var(--amber); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+h1 {
+  margin: 0;
+  font-family: var(--stencil);
+  font-weight: 400;
+  font-size: clamp(2rem, 7vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: .04em;
+  color: var(--bone);
+}
+.sub { margin: .5rem 0 0; color: var(--khaki); max-width: 60ch; }
+h2 { font-family: var(--stencil); font-weight: 400; letter-spacing: .05em; font-size: 1.5rem; margin: 2rem 0 .75rem; }
+
+.briefing {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--green);
+  padding: .9rem 1.1rem;
+}
+.briefing p { margin: .2rem 0; }
+.briefing code { font-family: Consolas, "Courier New", monospace; font-size: .85rem; color: var(--amber); word-break: break-all; }
+.briefing.error { border-left-color: var(--red); }
+
+.tools { display: flex; flex-wrap: wrap; gap: .75rem 1rem; align-items: center; margin-top: 1.5rem; }
+.search { flex: 1 1 240px; }
+.search input {
+  width: 100%; padding: .6rem .8rem;
+  background: var(--ink); color: var(--bone);
+  border: 1px solid var(--khaki); border-radius: 0;
+  font: inherit;
+}
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+.chip {
+  padding: .45rem .9rem; background: transparent; color: var(--khaki);
+  border: 1px solid var(--line); border-radius: 0; font: inherit; cursor: pointer;
+}
+.chip[aria-pressed="true"] { background: var(--amber); border-color: var(--amber); color: var(--ink); font-weight: 600; }
+.chip:hover { border-color: var(--khaki); }
+:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+
+.table-wrap { background: var(--panel); border: 1px solid var(--line); }
+table { width: 100%; border-collapse: collapse; }
+th {
+  text-align: left; padding: .7rem .8rem;
+  background: var(--khaki); color: var(--ink);
+  font-family: var(--stencil); font-weight: 400; letter-spacing: .05em;
+}
+td { padding: .6rem .8rem; border-top: 1px solid var(--line); vertical-align: middle; }
+tbody tr:hover { background: #2a3022; }
+.cover { display: block; width: 128px; height: 60px; object-fit: cover; border: 1px solid var(--line); background: var(--ink); }
+.cover.none { display: grid; place-items: center; color: var(--khaki); font-size: .8rem; }
+.name { font-weight: 600; }
+
+.badge { display: inline-block; padding: .1rem .55rem; border: 1px solid currentColor; font-size: .95rem; }
+.r-very { color: var(--green); }
+.r-mostly { color: var(--amber); }
+.r-mixed { color: var(--red); }
+.store { color: var(--amber); font-weight: 600; }
+.empty { margin: 0; padding: 1.25rem; color: var(--khaki); }
+
+@media (max-width: 720px) {
+  .wrap { padding-top: 1.25rem; }
+  table, tbody, tr, td { display: block; width: 100%; }
+  thead { position: absolute; left: -9999px; }
+  tr { border-top: 4px solid var(--amber); padding: .5rem 0; }
+  tr:first-child { border-top: 0; }
+  td { display: flex; justify-content: space-between; gap: 1rem; border-top: 0; padding: .3rem .9rem; }
+  td::before { content: attr(data-label); color: var(--khaki); flex: 0 0 5.5rem; }
+  td.cell-cover { display: block; padding: 0 .9rem .4rem; }
+  td.cell-cover::before { content: none; }
+  .cover { width: 100%; height: auto; aspect-ratio: 460 / 215; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
