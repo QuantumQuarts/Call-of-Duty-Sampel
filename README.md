@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Arsenal Call of Duty - Sistem Terdistribusi (VM 1 dan VM 3)
 
 ```
@@ -71,3 +72,29 @@ CRUD, validasi (400/404), alur seller ke VM 1 ke database, tarik ulang tanpa dat
 - ID game bisa melompat (mis. 7 ke 9) karena `INSERT IGNORE`; ini normal di MySQL.
 - Endpoint CRUD VM 1 belum memakai login; cukup untuk praktikum jaringan tertutup.
 - Jangan commit file `.env` (sudah ada di `.gitignore`).
+=======
+# Arsenal Call of Duty (dummy PHP + MySQL)
+
+Struktur:
+```
+cod-games/
+  index.html      halaman utama
+  css/style.css   tampilan responsif bertema militer
+  js/app.js       ambil data dari api.php, render tabel, filter
+  api.php         query MySQL, keluaran JSON
+  config.php      kredensial dari Environment Variables
+  sql/database.sql
+```
+
+## Deploy ke DewaCloud
+1. New Environment: **Apache (PHP 8.x)** + **MySQL**.
+2. phpMyAdmin (node MySQL): tab SQL, jalankan isi `sql/database.sql`.
+3. Node Apache > Settings > Variables, tambahkan:
+   `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME` (= `CoD_db`).
+   Gunakan IP private / hostname node MySQL untuk `DB_HOST`.
+4. Deploy repo (GitHub/GitLab) ke context **ROOT** lewat Deployment Manager.
+5. Buka URL environment. Status "Koneksi berhasil" dan hostname server tampil di panel atas.
+
+## Tes lokal (XAMPP)
+Salin folder ke `htdocs`, impor `sql/database.sql`, buka `http://localhost/cod-games/`.
+>>>>>>> d5b2418d99b23cf29ebbff8a5f88c84b9f6c59b6
