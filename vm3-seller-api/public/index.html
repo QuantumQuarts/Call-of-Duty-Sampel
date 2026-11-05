@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pos Seller Call of Duty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Barlow+Semi+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <h1>Pos Seller</h1>
+      <p class="sub">Tambahkan game baru. Pengajuan akan ditarik oleh VM 1 dan disimpan ke database pusat.</p>
+    </header>
+
+    <section class="briefing" id="status" aria-live="polite">
+      <p><strong>Status VM 3 (Seller API)</strong></p>
+      <p>Hostname: <code id="st-host">-</code></p>
+      <p>Menunggu diambil VM 1: <span id="st-pending">-</span></p>
+      <p>Total pengajuan: <span id="st-total">-</span></p>
+    </section>
+
+    <form class="form" id="form" autocomplete="off">
+      <label>Nama seller
+        <input name="seller_name" id="seller_name" required maxlength="100">
+      </label>
+      <label>Nama game
+        <input name="game_name" required maxlength="150" placeholder="Call of Duty: Vanguard">
+      </label>
+      <label>Ukuran
+        <input name="size" required maxlength="50" placeholder="95 GB">
+      </label>
+      <label>Kategori
+        <input name="category" required maxlength="100" list="cats" placeholder="Pilih atau ketik">
+        <datalist id="cats">
+          <option>Modern Warfare</option><option>Black Ops</option><option>WWII</option>
+          <option>Ghosts</option><option>Advanced Warfare</option><option>Vanguard</option><option>Warzone</option>
+        </datalist>
+      </label>
+      <label>Rating
+        <select name="rating" required>
+          <option>Overwhelmingly Positive</option><option>Very Positive</option>
+          <option selected>Mostly Positive</option><option>Mixed</option>
+          <option>Mostly Negative</option><option>Very Negative</option>
+        </select>
+      </label>
+      <label>Alamat gambar (opsional)
+        <input name="image_url" type="url" maxlength="500" placeholder="https://...">
+      </label>
+      <div class="wide"><button type="submit" class="btn" id="submit">Kirim pengajuan</button></div>
+    </form>
+    <p class="note" id="msg" role="status"></p>
+
+    <h2>Pengajuan</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Waktu</th><th>Game</th><th>Seller</th><th>Status</th><th>Aksi</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <p class="empty" id="empty" hidden>Belum ada pengajuan. Isi form di atas untuk menambahkan game.</p>
+    </div>
+  </main>
+  <script src="js/app.js"></script>
+</body>
+</html>
